@@ -41,10 +41,11 @@ if(BUILD_PNG)
 	find_package(PNG)
 endif()
 
+find_package(CYAN) 
 ### Config File
 
 configure_file ( "${PROJECT_SOURCE_DIR}/config.h.in"
-		         "${PROJECT_SOURCE_DIR}/include/cyan_fileio/config/cyan.h" )
+		         "${PROJECT_SOURCE_DIR}/include/cyan_fileio/config/cyan_fileio.h" )
 
 ### Set include directories 
         
@@ -52,9 +53,9 @@ include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/include/"
 	                 "${CMAKE_CURRENT_BINARY_DIR}" 
 		) 
 
-find_package(cyan CONFIG REQUIRED ) 
 if(CYAN_FOUND)
-	include_directories("${CYAN_INCLUDE_DIRS}")
+	message("SUCCESS: cyan was found")
+	include_directories( "${CYAN_INCLUDE_DIR}")
 else()
 	message("ERROR: cyan was not found")
 endif()
@@ -83,7 +84,7 @@ set_target_properties(cyan_fileio PROPERTIES VERSION ${cyan_fileio_VERSION_STRIN
 
 target_link_libraries( "cyan_fileio" "m" )
 if (CYAN_FOUND)
-	target_link_libraries( "cyan_fileio" ${CYAN_LIBRARIES})
+	target_link_libraries( "cyan_fileio" ${CYAN_LIBRARY})
 endif()
 
 if (PNG_FOUND)
@@ -93,15 +94,15 @@ endif()
 
 ### Cmake file
 
-configure_file(cyan_fileioConfig.cmake.in "${PROJECT_BINARY_DIR}/cyan_fileioConfig.cmake" @ONLY)
+configure_file(cyan_fileio-config.cmake.in "${PROJECT_BINARY_DIR}/cyan_fileio-config.cmake" @ONLY)
 
-install ( FILES "${PROJECT_BINARY_DIR}/cyan_fileioConfig.cmake" 
+install ( FILES "${PROJECT_BINARY_DIR}/cyan_fileio-config.cmake" 
       DESTINATION "${INSTALL_LIB_PATH}/cyan_fileio" COMPONENT dev )  
 
-configure_file(cyan_fileioConfigVersion.cmake.in
-	"${PROJECT_BINARY_DIR}/cyan_fileioConfigVersion.cmake" @ONLY)
+configure_file(cyan_fileio-configVersion.cmake.in
+	"${PROJECT_BINARY_DIR}/cyan_fileio-configVersion.cmake" @ONLY)
 
-install ( FILES "${PROJECT_BINARY_DIR}/cyan_fileioConfigVersion.cmake" 
+install ( FILES "${PROJECT_BINARY_DIR}/cyan_fileio-configVersion.cmake" 
       DESTINATION "${INSTALL_LIB_PATH}/cyan_fileio" COMPONENT dev )  
 
 ### Install 
