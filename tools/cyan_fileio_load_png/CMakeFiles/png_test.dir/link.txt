@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/png_test.dir/png_test.c.o  -o png_test -Wl,-rpath,/home/sf/Prog/cyan_fileio ../../libcyan_fileio.so.0.1.1 -lm -lcyan -lpng -lz 

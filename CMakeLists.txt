@@ -35,6 +35,7 @@ endforeach()
 ### Options ###
 
 option(BUILD_TEST   "Build cyan_fileio tests" ON)
+option(BUILD_TOOLS "Build and install cyan_fileio tools" ON)
 option(BUILD_PNG    "Link PNG library" ON)
 ###Search for libpng
 if(BUILD_PNG)
@@ -54,7 +55,7 @@ include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/include/"
 		) 
 
 if(CYAN_FOUND)
-	message("SUCCESS: cyan was found")
+	message("SUCCESS: cyan was found in ${CYAN_INCLUDE_DIR}")
 	include_directories( "${CYAN_INCLUDE_DIR}")
 else()
 	message("ERROR: cyan was not found")
@@ -84,6 +85,7 @@ set_target_properties(cyan_fileio PROPERTIES VERSION ${cyan_fileio_VERSION_STRIN
 
 target_link_libraries( "cyan_fileio" "m" )
 if (CYAN_FOUND)
+	message("Linking cyan library located at : ${CYAN_LIBRARY}")
 	target_link_libraries( "cyan_fileio" ${CYAN_LIBRARY})
 endif()
 
@@ -108,13 +110,19 @@ install ( FILES "${PROJECT_BINARY_DIR}/cyan_fileio-configVersion.cmake"
 ### Install 
 
 install( TARGETS "cyan_fileio"
-	    RUNTIME DESTINATION ${INSTALL_BIN_PATH}  COMPONENT main
-	    LIBRARY DESTINATION ${INSTALL_LIB_PATH}  COMPONENT main
-        ARCHIVE DESTINATION ${INSTALL_AR_PATH}   COMPONENT main )
+	    RUNTIME DESTINATION "${INSTALL_BIN_PATH}/cyan_fileio"  COMPONENT main
+	    LIBRARY DESTINATION "${INSTALL_LIB_PATH}/cyan_fileio"  COMPONENT main
+	    ARCHIVE DESTINATION ${INSTALL_AR_PATH}   COMPONENT main )	##TODO I don't know what is the archive, so i didn't
+    									##modify destination to "cyan_fileio"
 
 install( FILES ${hdr}
 	    DESTINATION ${INSTALL_HEADERS_PATH}/cyan_fileio/${name} 
-        COMPONENT main )
+	    COMPONENT main )
+
+### Build tools
+if(BUILD_TOOLS)
+	add_subdirectory(tools)
+endif()
 
 # Regression tests
 
@@ -130,6 +138,7 @@ MESSAGE(STATUS "")
 MESSAGE(STATUS "Build type:        " ${CMAKE_BUILD_TYPE})
 MESSAGE(STATUS "")
 MESSAGE(STATUS "ENABLE_LIBPNG:      " ${BUILD_PNG})
+MESSAGE(STATUS "BUILD_TOOLS:        " ${BUILD_TOOLS})
 MESSAGE(STATUS "BUILD_TEST:        " ${BUILD_TEST})
 MESSAGE(STATUS "")
 MESSAGE(STATUS "*********************************************************")
