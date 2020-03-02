@@ -13,7 +13,8 @@ CMakeCache
 *.lo
 *.make
 *.cmake
+*.so
 
-
+install_manifest.txt
 build/*
 include/cyan/cyan_config.h

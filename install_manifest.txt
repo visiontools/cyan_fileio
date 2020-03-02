@@ -1,7 +1,0 @@
-/usr/local/lib/cyan_fileio/cyan_fileio-config.cmake
-/usr/local/lib/cyan_fileio/cyan_fileio-configVersion.cmake
-/usr/local/lib/cyan_fileio/libcyan_fileio.so.0.1.1
-/usr/local/lib/cyan_fileio/libcyan_fileio.so.0
-/usr/local/lib/cyan_fileio/libcyan_fileio.so
-/usr/local/include/cyan_fileio/load_png.h
-/usr/local/bin/cyan_fileio_load_png
