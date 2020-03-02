@@ -13,7 +13,7 @@ CMakeCache
 *.lo
 *.make
 *.cmake
-*.so
+*.so*
 
 install_manifest.txt
 build/*
