@@ -1,0 +1,3 @@
+/home/sf/Prog/cyan_fileio/test/png_test/CMakeFiles/CMakeTmp/CMakeFiles/rebuild_cache.dir
+/home/sf/Prog/cyan_fileio/test/png_test/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_129e9.dir
+/home/sf/Prog/cyan_fileio/test/png_test/CMakeFiles/CMakeTmp/CMakeFiles/edit_cache.dir

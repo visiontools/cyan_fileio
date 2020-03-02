@@ -1,0 +1,17 @@
+# Files we don't need to track
+
+Makefile
+Makefile.in
+CMakeFile
+
+*~
+.*.swp
+*.o
+*.la
+*.lo
+*.make
+*.cmake
+*/CMakeFiles
+
+build/*
+include/cyan/cyan_config.h
