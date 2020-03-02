@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC   -shared -Wl,-soname,libcyan_fileio.so.0 -o libcyan_fileio.so.0.1.1 CMakeFiles/cyan_fileio.dir/src/load_png.c.o -lm -lcyan -lpng -lz 

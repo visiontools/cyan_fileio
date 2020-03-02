@@ -3,6 +3,8 @@
 Makefile
 Makefile.in
 CMakeFile
+CMakeFiles
+CMakeCache
 
 *~
 .*.swp
@@ -11,7 +13,7 @@ CMakeFile
 *.lo
 *.make
 *.cmake
-*/CMakeFiles
+
 
 build/*
 include/cyan/cyan_config.h
