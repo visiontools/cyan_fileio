@@ -23,6 +23,7 @@ set ( INSTALL_LIB_PATH lib )
 set ( INSTALL_AR_PATH  lib )
 set ( INSTALL_HEADERS_PATH include )
 
+set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath -Wl,/usr/local/lib") 
 # Make relative paths absolute (needed later on)
 
 foreach(p LIB BIN HEADERS AR)
@@ -110,8 +111,8 @@ install ( FILES "${PROJECT_BINARY_DIR}/cyan_fileio-configVersion.cmake"
 ### Install 
 
 install( TARGETS "cyan_fileio"
-	    RUNTIME DESTINATION "${INSTALL_BIN_PATH}/cyan_fileio"  COMPONENT main
-	    LIBRARY DESTINATION "${INSTALL_LIB_PATH}/cyan_fileio"  COMPONENT main
+	    RUNTIME DESTINATION ${INSTALL_BIN_PATH}  COMPONENT main
+	    LIBRARY DESTINATION ${INSTALL_LIB_PATH}  COMPONENT main
 	    ARCHIVE DESTINATION ${INSTALL_AR_PATH}   COMPONENT main )	##TODO I don't know what is the archive, so i didn't
     									##modify destination to "cyan_fileio"
 
