@@ -5,11 +5,12 @@
 #  CYAN_LIBRARY_DIR  - library directory (normally not used!)
 #  CYAN_LIBRARIES    - libraries to link against
  
-# Tell the user project where to find our headers and libraries
-
-FIND_PACKAGE_MESSAGE(cyan_fileio "Found cyan_fileio @cyan_fileio_VERSION_STRING@" "[${CYAN_FILEIO_LIBRARY}][${CYAN_FILEIO_INCLUDE_DIR}]" )
+# Tell the user project where to find our headers and librarie
+#FIND_PACKAGE_MESSAGE( cyan_fileio "Found cyan_fileio @cyan_fileio_VERSION_STRING@ at ${CYAN_FILEIO_LIBRARY}"
+##	"[${CYAN_FILEIO_LIBRARY}][${CYAN_FILEIO_INCLUDE_DIR}]" )
+#	FIND_PACKAGE_MESSAGE(cyan_fileio "Found cyan_fileio @cyan_fileio_VERSION_STRING@" "[${CYAN_FILEIO_LIBRARY}][${CYAN_FILEIO_INCLUDE_DIR}]" )
 
 set(CYAN_FILEIO_INCLUDE_DIR "@INSTALL_HEADERS_PATH@" )
-set(CYAN_FILEIO_LIBRARY_DIR  "@INSTALL_LIB_PATH@")
+set(CYAN_FILEIO_LIBRARY_DIR  "@INSTALL_LIB_PATH@/cyan_fileio")
 set(CYAN_FILEIO_LIBRARY    cyan_fileio )
     

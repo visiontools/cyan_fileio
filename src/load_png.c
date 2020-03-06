@@ -48,9 +48,9 @@ image_t* png2image(FILE * fp) {
     png_get_IHDR (png_ptr, info_ptr, & width, & height, & bit_depth,
 		  & color_type, & interlace_method, & compression_method,
 		  & filter_method);
-		if(interlace_method != 0){
-		fprintf(stderr, "Behaviour could be unexpected in the following");
-		//TODO See why ? Fix ? Who doesn't like a surprise ?
+	if(interlace_method != 0){
+	fprintf(stderr, "Behaviour could be unexpected in the following");
+	//TODO See why ? Fix ? Who doesn't like a surprise ?
 	}
 
     //Uncomment the following line if you want to ignore the alpha channel (never tested)

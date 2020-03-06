@@ -18,10 +18,10 @@ set( CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /lib /usr/lib /usr/local/lib )
 set( CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} /usr/include /usr/local/include )
 set( CMAKE_MODULE_PATH  ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake" ) 
 
-set ( INSTALL_BIN_PATH bin )
-set ( INSTALL_LIB_PATH lib )
-set ( INSTALL_AR_PATH  lib )
-set ( INSTALL_HEADERS_PATH include )
+set ( INSTALL_BIN_PATH /usr/local/bin )
+set ( INSTALL_LIB_PATH /usr/local/lib )
+set ( INSTALL_AR_PATH  /usr/local/lib )
+set ( INSTALL_HEADERS_PATH /usr/local/include )
 
 set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath -Wl,/usr/local/lib") 
 # Make relative paths absolute (needed later on)
@@ -46,8 +46,8 @@ endif()
 find_package(CYAN) 
 ### Config File
 
-configure_file ( "${PROJECT_SOURCE_DIR}/config.h.in"
-		         "${PROJECT_SOURCE_DIR}/include/cyan_fileio/config/cyan_fileio.h" )
+configure_file ( "${PROJECT_SOURCE_DIR}/config.h.in" 
+			"${PROJECT_SOURCE_DIR}/include/cyan_fileio/config/cyan_fileio.h" )
 
 ### Set include directories 
         
