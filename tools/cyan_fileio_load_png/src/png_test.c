@@ -29,15 +29,26 @@ int main(int argc, char** argv, char * envv){
 		return -1;
 	}
 
+	image_save_ppm( image, "image.ppm" );
+	
 	image_t * cat_image = NULL;
-	image_cat_hor(&cat_image, image, image);
-	if(cat_image == NULL){
-		fprintf(stderr, "cat_image is NULL\n");
+	if(image_cat_ver(&cat_image, image, image)){
+		fprintf(stderr, "Error concatenating images\n");
 		return -1;
 	}
-	image_save_ppm( image, "image.ppm" );
 	image_save_ppm( cat_image, "cat_image.ppm" );
+	
+	image_t * crop_image = NULL;
+		
+	if(image_crop_rows(&crop_image, image, 22, 420)){
+		fprintf(stderr, "Error cropping image\n");
+		return -1;
+	}
+	image_save_ppm(crop_image, "crop_image.ppm");
+
 	image_free(image);
+	image_free(cat_image);
+	free(crop_image);
 	fclose(fp);
 
 	return 0;
