@@ -24,6 +24,7 @@ int main(int argc, char** argv, char * envv){
 
 	image_t * image = NULL;
 	image = png2image(fp);
+	
 	if(image == NULL){
 		fprintf(stderr, "Image allocation failed\n");
 		return -1;
@@ -46,9 +47,17 @@ int main(int argc, char** argv, char * envv){
 	}
 	image_save_ppm(crop_image, "crop_image.ppm");
 
+	image_t * crop_and_cat_image = NULL;
+	if(image_cat_hor(&crop_and_cat_image, image, crop_image)){
+		fprintf(stderr, "Error concatenating cropped image\n");
+		return -1;
+	}
+	image_save_ppm(crop_and_cat_image, "cropcat_image.ppm");
+
 	image_free(image);
 	image_free(cat_image);
 	free(crop_image);
+	image_free(crop_and_cat_image);
 	fclose(fp);
 
 	return 0;
