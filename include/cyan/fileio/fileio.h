@@ -1,8 +1,0 @@
-#ifndef CYAN_FILEIO_CONFIG_H
-#define CYAN_FILEIO_CONFIG_H
-
-#define VERSION_MAJOR 0
-#define VERSION_MINOR 1
-
-
-#endif

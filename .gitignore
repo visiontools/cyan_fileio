@@ -17,4 +17,4 @@ CMakeCache
 
 install_manifest.txt
 build/*
-include/cyan/cyan_config.h
+include/cyan/fileio/fileio.h

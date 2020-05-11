@@ -4,5 +4,7 @@
 #define VERSION_MAJOR @cyan_fileio_VERSION_MAJOR@
 #define VERSION_MINOR @cyan_fileio_VERSION_MINOR@
 
+#include <cyan/fileio/imageio.h>
+
 
 #endif

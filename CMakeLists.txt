@@ -47,12 +47,12 @@ find_package(ImageMagick)
 if ( cyan_FOUND )
     message( STATUS "Found cyan" ) 
 else() 
-    message( FATAL_ERROR "cyan not found" )
+    message( FATAL_ERROR "Error : cyan library not found" )
 endif()
 
 ### Config File
 
-configure_file ( "${PROJECT_SOURCE_DIR}/config.h.in" 
+configure_file ( "${PROJECT_SOURCE_DIR}/fileio.h.in" 
 			     "${PROJECT_SOURCE_DIR}/include/cyan/fileio/fileio.h" )
 
 ### Set include directories 
