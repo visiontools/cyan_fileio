@@ -37,18 +37,19 @@ endforeach()
 ### Options ###
 
 option(BUILD_TEST  "Build cyan_fileio tests" ON)
-option(BUILD_TOOLS "Build and install cyan_fileio tools" ON)
 
 ###Search for libpng
 
 find_package(cyan) 
-find_package(ImageMagick) 
+find_package(ImageMagick COMPONENTS MagickCore) 
 
 if ( cyan_FOUND )
     message( STATUS "Found cyan" ) 
 else() 
     message( FATAL_ERROR "Error : cyan library not found" )
 endif()
+
+SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fopenmp -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16")
 
 ### Config File
 
@@ -59,7 +60,8 @@ configure_file ( "${PROJECT_SOURCE_DIR}/fileio.h.in"
         
 include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/include/"
 	                 "${CMAKE_CURRENT_BINARY_DIR}" 
-		) 
+                     "${ImageMagick_INCLUDE_DIRS}"
+                     ) 
 
 ### File lists
 
@@ -96,12 +98,6 @@ install( TARGETS "cyan_fileio"
 install( FILES ${hdr}
 	    DESTINATION ${INSTALL_HEADERS_PATH}/cyan/fileio/${name} 
 	    COMPONENT main )
-
-### Build tools
-
-# If(BUILD_TOOLS)
-	# add_subdirectory(tools)
-# endif()
 
 # Regression tests
 
