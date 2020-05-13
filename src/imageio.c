@@ -10,10 +10,14 @@
 
 int image_import( image_t** img, char* path ) {
 
-
     ExceptionInfo *exception;
     Image *image;
     ImageInfo *image_info;
+    Quantum* buffer ;
+    int i, j ;
+    double* X ;
+    double* Y ;
+    double* Z ;
 
     MagickCoreGenesis( (char*) NULL,MagickTrue);
     exception=AcquireExceptionInfo();
@@ -28,9 +32,30 @@ int image_import( image_t** img, char* path ) {
 
     // ---
 
+    if (*img == NULL ) {
+        *img = image_new( image->rows, image->columns ) ;
+    } else {
+        image_resize ( *img, image->rows, image->columns, NULL ) ;  
+    }
 
+    TransformImageColorspace( image, XYZColorspace, exception ) ;
+    buffer = GetAuthenticPixels( image, 0, 0, image->columns, image->rows, exception ) ;
+    X = (*img)->X ;
+    Y = (*img)->Y ;
+    Z = (*img)->Z ;
 
-
+    for (i=0; i<image->columns; i++ )
+        for (j=0; j<image->rows; j++ ) {
+            *X = (double) *buffer ;
+            buffer++ ;
+            X++ ;
+            *Y = (double) *buffer ;
+            buffer++ ;
+            Y++ ;
+            *Z = (double) *buffer ;
+            buffer++ ;
+            Z++ ;
+        }
 
     // ---
 
