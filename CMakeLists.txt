@@ -77,8 +77,9 @@ set_target_properties(cyan_fileio PROPERTIES VERSION ${cyan_fileio_VERSION_STRIN
 
 ### Linking
 
-target_link_libraries( "cyan_fileio" "m" )
-target_link_libraries( "cyan_fileio" ${CYAN_LIBRARY})
+target_link_libraries( "cyan_fileio" 
+                     "${CYAN_LIBRARY}"
+                     "${ImageMagick_LIBRARIES}" )
 
 
 ### Cmake file
@@ -101,10 +102,10 @@ install( FILES ${hdr}
 
 # Regression tests
 
-# if (BUILD_TEST)
-    # enable_testing()
-    # add_subdirectory(test)
-# endif()
+if (BUILD_TEST)
+    enable_testing()
+    add_subdirectory(test)
+endif()
 
 ### Pretty Display :
 
