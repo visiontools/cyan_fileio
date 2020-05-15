@@ -8,6 +8,8 @@ int main(int argc, char** argv) {
     img = NULL ;
 
     image_import( &img, "./lena.png" ) ; 
+    
+    image_export( img, "./output.png" ) ; 
 
 
     image_free( img ) ;
