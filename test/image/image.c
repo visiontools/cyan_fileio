@@ -9,7 +9,11 @@ int main(int argc, char** argv) {
 
     image_import( &img, "./lena.png" ) ; 
     
-    image_export( img, "./output.png" ) ; 
+    image_export( img, "./output.png", "PNG" ) ; 
+    
+    img->monochrome = 1 ;
+
+    image_export( img, "./output_mono.png", "PNG" ) ; 
 
 
     image_free( img ) ;

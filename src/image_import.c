@@ -59,7 +59,22 @@ int image_import( image_t** img, char* path ) {
             buffer++ ;
             B = (double) *buffer / QuantumRange ;
             buffer++ ;
+            
             RGB_to_XYZ( CYAN_RGB_sRGB, R,G,B, X, Y, Z ) ;
+            
+            // if ((i==0) && (j==0 )) {
+            //     
+            //     printf("Read : R = %lf \n", R ) ;
+            //     printf("Read : G = %lf \n", G ) ;
+            //     printf("Read : B = %lf \n", B ) ;
+            //     printf("\n");
+            //     printf("Read : X = %lf \n", *X ) ;
+            //     printf("Read : Y = %lf \n", *Y ) ;
+            //     printf("Read : Z = %lf \n", *Z ) ;
+            //     printf("\n");
+            // 
+            // }
+            
             X++ ;
             Y++ ;
             Z++ ;
