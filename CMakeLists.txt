@@ -37,6 +37,7 @@ endforeach()
 ### Options ###
 
 option(BUILD_TEST  "Build cyan_fileio tests" ON)
+option(BUILD_TOOLS "Build cyan_fileio tools" ON)
 
 ###Search for libpng
 
@@ -106,6 +107,10 @@ if (BUILD_TEST)
     enable_testing()
     add_subdirectory(test)
 endif()
+
+if (BUILD_TOOLS)
+    add_subdirectory(tools)
+endif() 
 
 ### Pretty Display :
 
