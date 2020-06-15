@@ -28,7 +28,7 @@ jobs:
         known_hosts: ${{ secrets.SSH_KNOWNHOSTS }}
       
     - name: Install Dependencies
-      run: sudo apt-get install imagemagick-devel
+      run: sudo apt-get install libmagickcore-dev
 
     - name: Fetch all cyan deb files
       shell: bash
