@@ -27,14 +27,24 @@ jobs:
         name: id_rsa # optional
         known_hosts: ${{ secrets.SSH_KNOWNHOSTS }}
       
-    - name: Fetch ImageMagick
+    - name: ImageMagick -> git
       shell: bash
       run: git clone https://github.com/ImageMagick/ImageMagick.git ${{runner.workspace}}/ImageMagick
 
-    - name: imagemagick configure
+    - name: ImageMagick -> configure
       shell: bash
       working-directory: ${{runner.workspace}}/ImageMagick
       run: ./configure
+
+    - name: ImageMagick -> make
+      shell: bash
+      working-directory: ${{runner.workspace}}/ImageMagick
+      run: make
+
+    - name: ImageMagick -> make install
+      shell: bash
+      working-directory: ${{runner.workspace}}/ImageMagick
+      run: sudo make install
 
     - name: Fetch all cyan deb files
       shell: bash
