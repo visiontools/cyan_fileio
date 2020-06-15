@@ -31,12 +31,10 @@ jobs:
       run: sudo apt-get install imagemagick
 
     - name: Fetch cyan deb file
-      working-directory: ${{runner.workspace}}/build
       shell: bash
       run: scp ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:~/cyan.deb .
 
     - name: Install cyan
-      working-directory: ${{runner.workspace}}/build
       shell: bash
       run: sudo dpkg -i cyan.deb .
 
