@@ -25,15 +25,6 @@ set ( INSTALL_HEADERS_PATH /usr/local/include )
 
 set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath -Wl,/usr/local/lib") 
 
-# Make relative paths absolute (needed later on)
-
-foreach(p LIB BIN HEADERS AR)
-        set(var INSTALL_${p}_PATH)
-        if(NOT IS_ABSOLUTE "${${var}}")
-                set(${var} "${CMAKE_INSTALL_PREFIX}/${${var}}")
-        endif()
-endforeach()
-
 ### Options ###
 
 option(BUILD_TEST  "Build cyan_fileio tests" ON)
@@ -111,6 +102,11 @@ endif()
 if (BUILD_TOOLS)
     add_subdirectory(tools)
 endif() 
+
+# Cpack specifics
+
+set (CPACK_PACKAGE_CONTACT "seb@homedruon.com")
+include(CPack)
 
 ### Pretty Display :
 
