@@ -29,11 +29,12 @@ jobs:
       
     - name: Fetch ImageMagick
       shell: bash
-      run: wget https://www.imagemagick.org/download/ImageMagick.tar.gz
+      run: git clone https://github.com/ImageMagick/ImageMagick.git
 
-    - name: Unocmpress ImageMagick
+    - name: [imagemagick] configure
       shell: bash
-      run: tar xf ImageMagick.tar.gz
+      working-directory: ${{runner.workspace}}/ImageMagick
+      run: ./configure
 
     - name: Fetch all cyan deb files
       shell: bash
