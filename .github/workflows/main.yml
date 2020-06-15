@@ -27,8 +27,13 @@ jobs:
         name: id_rsa # optional
         known_hosts: ${{ secrets.SSH_KNOWNHOSTS }}
       
-    - name: Install Dependencies
-      run: sudo apt-get install libmagickcore-dev libmagickcore-6-headers 
+    - name: Fetch ImageMagick
+      shell: bash
+      run: wget https://www.imagemagick.org/download/ImageMagick.tar.gz
+
+    - name: Unocmpress ImageMagick
+      shell: bash
+      run: tar xf ImageMagick.tar.gz
 
     - name: Fetch all cyan deb files
       shell: bash
