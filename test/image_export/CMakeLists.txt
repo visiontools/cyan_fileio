@@ -4,7 +4,7 @@ target_link_libraries ( test_image_export cyan cyan_fileio )
 # image_export_01 : lena ( square ) -> png
 
 add_test (NAME image_export_01
-    COMMAND test_image_export ${CYAN_DATASETS_DIR}/images/lena.cyan "PNG"./output_01.png )
+    COMMAND test_image_export ${CYAN_DATASETS_DIR}/images/lena.cyan "PNG" ./output_01.png )
 
 add_test( NAME image_export_01_bis 
     COMMAND ${CMAKE_COMMAND} -E compare_files ./output_01.png
