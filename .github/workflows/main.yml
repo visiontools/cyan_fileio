@@ -28,7 +28,7 @@ jobs:
         known_hosts: ${{ secrets.SSH_KNOWNHOSTS }}
       
     - name: Install Dependencies
-      run: sudo apt-get install libmagickcore-dev
+      run: sudo apt-get install libmagickcore-dev libmagickcore-6-headers 
 
     - name: Fetch all cyan deb files
       shell: bash
