@@ -28,7 +28,7 @@ jobs:
         known_hosts: ${{ secrets.SSH_KNOWNHOSTS }}
       
     - name: Install Dependencies
-      run: sudo apt-get install imagemagick
+      run: sudo apt-get install imagemagick-devel
 
     - name: Fetch all cyan deb files
       shell: bash
