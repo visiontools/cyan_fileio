@@ -30,6 +30,16 @@ jobs:
     - name: Install Dependencies
       run: sudo apt-get install imagemagick
 
+    - name: Fetch Cyan deb files
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: scp ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:./*.deb .
+
+    - name: Install cyan
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: sudo dpkg -i cyan.deb .
+
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/build
 
