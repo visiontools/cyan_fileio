@@ -34,7 +34,7 @@ jobs:
     - name: ImageMagick -> configure
       shell: bash
       working-directory: ${{runner.workspace}}/ImageMagick
-      run: ./configure
+      run: ./configure --with-modules
 
     - name: ImageMagick -> make
       shell: bash
