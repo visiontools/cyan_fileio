@@ -53,6 +53,7 @@ configure_file ( "${PROJECT_SOURCE_DIR}/fileio.h.in"
 include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/include/"
 	                 "${CMAKE_CURRENT_BINARY_DIR}" 
                      "${ImageMagick_INCLUDE_DIRS}"
+                     "${ImageMagick_MagickCore_INCLUDE_DIRS}"
                      ) 
 
 ### File lists
