@@ -31,7 +31,7 @@ jobs:
       shell: bash
       run: git clone https://github.com/ImageMagick/ImageMagick.git
 
-    - name: [imagemagick] configure
+    - name: imagemagick configure
       shell: bash
       working-directory: ${{runner.workspace}}/ImageMagick
       run: ./configure
