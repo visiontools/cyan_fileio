@@ -11,8 +11,8 @@ project (cyan_fileio)
 set (cyan_fileio_VERSION_MAJOR 0)
 set (cyan_fileio_VERSION_MINOR 1)
 set (cyan_fileio_VERSION_PATCH 0)
-set (cyan_fileio_VERSION_STRING
-	${cyan_fileio_VERSION_MAJOR}.${cyan_fileio_VERSION_MINOR}.${cyan_fileio_VERSION_PATCH} )
+set (cyan_fileio_VERSION
+	"${cyan_fileio_VERSION_MAJOR}.${cyan_fileio_VERSION_MINOR}.${cyan_fileio_VERSION_PATCH}" )
 
 set( CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /lib /usr/lib /usr/local/lib )
 set( CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} /usr/include /usr/local/include )
@@ -32,14 +32,8 @@ option(BUILD_TOOLS "Build cyan_fileio tools" ON)
 
 ###Search for libpng
 
-find_package(cyan) 
+find_package(cyan REQUIRED)
 find_package(ImageMagick COMPONENTS MagickCore) 
-
-if ( cyan_FOUND )
-    message( STATUS "Found cyan" ) 
-else() 
-    message( FATAL_ERROR "Error : cyan library not found" )
-endif()
 
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fopenmp -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16")
 
@@ -65,7 +59,7 @@ file( GLOB hdr  "include/cyan/fileio/*.h"  )
 
 add_library( "cyan_fileio" SHARED ${src} ) 
 
-set_target_properties(cyan_fileio PROPERTIES VERSION ${cyan_fileio_VERSION_STRING}
+set_target_properties(cyan_fileio PROPERTIES VERSION ${cyan_fileio_VERSION}
                                     SOVERSION ${cyan_fileio_VERSION_MAJOR})
 
 ### Linking
